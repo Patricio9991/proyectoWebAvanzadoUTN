@@ -1,9 +1,13 @@
 import { useState } from "react"
+import "./Button.css"
 
-
-export default function Button(){
-    const [like,setLike]=useState(0)
+export default function Button({color,accion}){
+    
     return(
-        <button onClick={()=>setLike(like+1)}>{like} Like!</button>
+        <button type="button" class={`btn btnCRUD ${color}`}>
+            
+            {accion}
+        
+        </button>
     )
 }

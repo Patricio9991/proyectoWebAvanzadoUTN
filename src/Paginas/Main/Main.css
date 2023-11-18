@@ -1,9 +1,31 @@
+@font-face {
+    font-family: "jukebox";
+    src: url('../Main/font/The_Juke_Box-FFP.ttf')
+}
+
 .canvasContent{
     background-image:url("../Main/fondo/pxfuel.jpg");
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-size:cover;    
-    height: 100vh;
-    width: 100vw;
+
    
+}
+
+.contenedor-botones{
+    display: flex;
+    justify-content: space-around;
+
+}
+
+h1{
+    color:orange;
+    font-size: 5em;
+    text-align: center;
+    font-family: "jukebox";
+}
+
+.conteneddor-artista-musica{
+    display: flex;
+    gap:150px;
 }
