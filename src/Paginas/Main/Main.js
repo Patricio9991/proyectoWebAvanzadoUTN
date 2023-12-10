@@ -2,12 +2,25 @@ import { Fragment, useEffect, useState } from "react"
 
 import Button from "../../Componentes/Button/Button"
 import Card from "../../Componentes/Card/Card"
-import Songs from "../../Componentes/Songs/Songs"
+import FormArtistas from "../../Componentes/Forms/FormArtistas"
 
 import "../Main/Main.css"
+import FormImagen from "../../Componentes/Forms/formImagen"
 
 
 export default function Home(){
+
+    const [artistas,setArtistas]=useState([])
+
+    const buscarInfo=async()=>{
+        await fetch("http://localhost:4000/artistas/todos")
+        .then((res)=>{ return res.json()})
+        .then((data)=>  setArtistas(data))
+        .catch((err)=>{console.log(err)})
+    }
+
+    useEffect(()=>{buscarInfo()},[])
+
 
     return(
         <div className="canvasContent">
@@ -23,11 +36,14 @@ export default function Home(){
                         <Button color={"btn-danger"}accion={"Borrar"}/>
                     </div>
                     <div className="conteneddor-artista-musica">
+                    {artistas.map((a)=>{
+                        return <div> <Card data={a}/> </div>
+                        
+                    })}
+
                         <div>
-                            <Card/>
-                        </div>
-                        <div>
-                            <Songs/>
+                           <FormArtistas/>
+                         
                         </div>
                     </div>
                     {/**

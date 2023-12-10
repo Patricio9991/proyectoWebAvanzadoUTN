@@ -1,31 +1,39 @@
 import "./Card.css"
 import { useState } from "react"
+import swal from 'sweetalert'
+import Songs from "../Songs/Songs"
 
-export default function Card(){
-
-    const [bio,setBio]=useState(false)
-    const [gen,setGen]=useState(false)
-
+export default function Card({data}){
 
 
 
+
+
+    const [flag,setFlag]=useState(false)
+
+    function popInfo(texto){
+        swal(texto) //utlizo Sweetalert para mandar alerts sobre informacion del artista
+    }
+
+    let variable= "https://i.pinimg.com/originals/f6/7b/3b/f67b3b27e834eda7d6539a0960520266.jpg"
+
+    
     return(
         <div className="contenedor">
             <div className="tarjetaArtista bg-primary">
-                <h2>Lana del Rey</h2>
-                <img src="https://i.pinimg.com/originals/f6/7b/3b/f67b3b27e834eda7d6539a0960520266.jpg" alt="..."/>
-                <span>Lana del Rey durante la era de Honeymoon</span>
+                <h2>{data.nombre}</h2>
+                <img src={data.imagenes} alt="..."/>
+                <span>{data.imagenes}</span>
                 <i>Datos generales</i>
-                <p>1985</p>
-                <p>Activa</p>
-                <button className="btn btn-primary"onClick={()=>{return setGen(!gen)}}>Generos</button>
-                <button className="btn btn-primary"onClick={()=>{ return setBio(!bio)}}>Bio</button>
+                <p>{data.añosActividad}</p>
+                <button className="btn btn-primary"onClick={()=>{popInfo(data.generos)}}>Generos</button>
+                <button className="btn btn-primary"onClick={()=>{ popInfo(data.breveBio)}}>Breve Bio</button>
+                <button className="btn btn-primary"onClick={()=>{ setFlag(!flag)}}>Canciones</button>
             </div>
+
+            {flag ?<Songs/>:""}
             
-            <div className="contenedor-info">
-                <p className={`bio ${gen ? "":"hidden"}`}>Generos: Indie pop, pop barroco, trip hop, Sadcore, dream pop, indie rock, Slowcore, rock psicodélico, pop psicodélico, rock y rhythm and blues</p>
-                <p className={`bio ${bio ? "":"hidden"}`}>Elizabeth Woolridge Grant (Nueva York, 21 de junio de 1985),conocida artísticamente como Lana Del Rey, es una cantante, compositora, modelo, actriz, escritora, productora y poetisa estadounidense. Su música se destaca por su estilizada calidad cinematográfica, su estilo retro y la exploración del romance trágico, el glamur y la melancolía, con frecuentes referencias a la cultura pop contemporánea y la estadounidense de los años 1950 y 1960.</p>
-            </div>
+          
             
         </div>
     )

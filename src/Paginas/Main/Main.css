@@ -6,10 +6,8 @@
 .canvasContent{
     background-image:url("../Main/fondo/pxfuel.jpg");
     background-repeat: no-repeat;
-    background-attachment: scroll;
     background-size:cover;    
-
-   
+    background-attachment: fixed;
 }
 
 .contenedor-botones{
@@ -27,5 +25,9 @@ h1{
 
 .conteneddor-artista-musica{
     display: flex;
-    gap:150px;
+    gap:100px;
+    flex-wrap: wrap;
+    align-items: center;
+    
+    
 }
