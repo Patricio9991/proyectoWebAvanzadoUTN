@@ -1,6 +1,6 @@
 import './form.css'
 
-export default function FormImagen({infoArtista}){
+export default function FormEliminar({infoArtista}){
     return(
         <form method='post' action="http://localhost:4000/artistas/nuevo" encType='multipart/form-data'> 
 

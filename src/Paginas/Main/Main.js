@@ -1,17 +1,17 @@
 import { Fragment, useEffect, useState } from "react"
 
-import Button from "../../Componentes/Button/Button"
+import "../Main/Main.css"
+
 import Card from "../../Componentes/Card/Card"
 import FormArtistas from "../../Componentes/Forms/FormArtistas"
-
-import "../Main/Main.css"
 import FormImagen from "../../Componentes/Forms/formImagen"
+import FormEliminar from "../../Componentes/Forms/formElimiar"
 
 
 export default function Home(){
 
     const [artistas,setArtistas]=useState([])
-
+    
     const buscarInfo=async()=>{
         await fetch("http://localhost:4000/artistas/todos")
         .then((res)=>{ return res.json()})
@@ -21,6 +21,8 @@ export default function Home(){
 
     useEffect(()=>{buscarInfo()},[])
 
+    const [show,setShow]=useState(true)
+    const [borrar,setBorrar]=useState(true)
 
     return(
         <div className="canvasContent">
@@ -30,22 +32,24 @@ export default function Home(){
             <main>
                 <div>
                     <div className="contenedor-botones">
-                        <Button color={"btn-success"} accion={"Crear"}/>
-                        <Button color={"btn-info"} accion={"Listar"}/>
-                        <Button color={"btn-light"} accion={"Editar"}/>
-                        <Button color={"btn-danger"}accion={"Borrar"}/>
-                    </div>
-                    <div className="conteneddor-artista-musica">
-                    {artistas.map((a)=>{
-                        return <div> <Card data={a}/> </div>
-                        
-                    })}
+                        <button className="btnCRUD btn btn-success" onClick={()=>{setShow(!show)}}> Agregar Artista </button>
+                        <button className="btnCRUD btn btn-primary" > Editar </button>
+                        <button className="btnCRUD btn btn-danger" onClick={()=>{setBorrar(!borrar)}}> Borrar </button>
 
-                        <div>
-                           <FormArtistas/>
-                         
-                        </div>
                     </div>
+
+                        <div className="contenedor-form">
+                           <FormArtistas show={show}/>
+                           <FormEliminar borrar={borrar}/>
+                        </div>
+                    
+                    <div className="conteneddor-artista-musica">
+                        {artistas.map((a)=>{
+                            return <div> <Card data={a}/> </div>
+                            
+                        })}
+                    </div>
+                    
                     {/**
                     <div>
                         <AlbumCard/>

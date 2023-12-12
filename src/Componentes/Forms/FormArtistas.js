@@ -2,29 +2,29 @@ import {Fragment, useState} from 'react'
 
 import './form.css'
 
-export default function FormArtistas(){
+export default function FormArtistas({show}){
 
     const [flagOk,setFlagOk]=useState(false)
 
     const cargarData=async(e)=>{
         e.preventDefault()
 
-        const form={
+        const form=JSON.stringify({
             nombre:e.target[0].value,
             añosActividad:e.target[1].value,
             breveBio:e.target[2].value,
             generos:e.target[3].value
             
             
-        }
+        })
         let a=document.querySelector("form")
-        console.log(form.nombre)
+        console.log(form)
         console.log(e)
        
 
         await fetch("http://localhost:4000/artistas/nuevo",{
             method:"post",
-            body:JSON.stringify(form),
+            body:form,
             headers:{
                 'Content-type':"application/json" //
             }
@@ -45,7 +45,7 @@ export default function FormArtistas(){
     return(
         <Fragment>
         {flagOk === false? 
-        <form onSubmit={(e)=>{cargarData(e)}}>
+        <form className={show===true? "bg-success hide":"bg-success form"} onSubmit={(e)=>{cargarData(e)}} >
             <label htmlFor="nombre">Nombre</label>
             <input type="text" id="nombre" name="nombre"/>
 
@@ -53,16 +53,14 @@ export default function FormArtistas(){
             <input type="text" id="añosActividad" name="añosActividad"/>
 
             <label htmlFor="Breve Bio">Breve Bio</label>
-            <input type="text" id="breveBio" name="breveBio"/>
+            <textarea id="breveBio" name="breveBio"></textarea>
 
             <label htmlFor="Generos">Generos</label>
-            <input type="text" id="generos" name="generos"/>
+            <input  type="text" id="generos" name="generos"/>
 
             
-            
-
-
-            <input type="submit" value="Enviar" /> 
+        
+            <input className="btn btn-success" type="submit" value="Enviar" /> 
            
         </form>
         :"Carga exitosa!"}

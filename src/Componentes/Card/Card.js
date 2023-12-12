@@ -23,7 +23,7 @@ export default function Card({data}){
             <div className="tarjetaArtista bg-primary">
                 <h2>{data.nombre}</h2>
                 <img src={data.imagenes} alt="..."/>
-                <span>{data.imagenes}</span>
+                <span></span>
                 <i>Datos generales</i>
                 <p>{data.añosActividad}</p>
                 <button className="btn btn-primary"onClick={()=>{popInfo(data.generos)}}>Generos</button>
