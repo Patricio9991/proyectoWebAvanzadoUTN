@@ -4,25 +4,29 @@ import "../Main/Main.css"
 
 import Card from "../../Componentes/Card/Card"
 import FormArtistas from "../../Componentes/Forms/FormArtistas"
-import FormImagen from "../../Componentes/Forms/formImagen"
-import FormEliminar from "../../Componentes/Forms/formElimiar"
+
 
 
 export default function Home(){
 
     const [artistas,setArtistas]=useState([])
     
-    const buscarInfo=async()=>{
-        await fetch("http://localhost:4000/artistas/todos")
+    
+
+    const buscarInfoArtistas=async()=>{
+        const info= await fetch("http://localhost:4000/artistas/todos")
         .then((res)=>{ return res.json()})
-        .then((data)=>  setArtistas(data))
+        .then((data)=> setArtistas(data))
         .catch((err)=>{console.log(err)})
+
+       
     }
 
-    useEffect(()=>{buscarInfo()},[])
 
-    const [show,setShow]=useState(true)
-    const [borrar,setBorrar]=useState(true)
+    useEffect(()=>{buscarInfoArtistas()},[])
+
+    const [showForm,setShowForm]=useState(true)
+    const [showArtistas,setShowArtistas]=useState(true)
 
     return(
         <div className="canvasContent">
@@ -32,24 +36,23 @@ export default function Home(){
             <main>
                 <div>
                     <div className="contenedor-botones">
-                        <button className="btnCRUD btn btn-success" onClick={()=>{setShow(!show)}}> Agregar Artista </button>
-                        <button className="btnCRUD btn btn-primary" > Editar </button>
-                        <button className="btnCRUD btn btn-danger" onClick={()=>{setBorrar(!borrar)}}> Borrar </button>
-
+                      
+                        <button className="btnCRUD btn btn-success" onClick={()=>{setShowForm(!showForm);console.log(showForm)}}> Agregar Artista </button>
+                        <button className="btnCRUD btn btn-primary" onClick={()=>{setShowArtistas(!showArtistas)}} > Mostrar Atistas </button>
                     </div>
 
-                        <div className="contenedor-form">
-                           <FormArtistas show={show}/>
-                           <FormEliminar borrar={borrar}/>
-                        </div>
-                    
+                        
+                        <FormArtistas showForm={showForm}/>
+                        
+                    {showArtistas === false ? 
                     <div className="conteneddor-artista-musica">
                         {artistas.map((a)=>{
-                            return <div> <Card data={a}/> </div>
+                            return  <Card data={a}/>
                             
                         })}
-                    </div>
-                    
+                    </div>: <p className="mensaje fs-1 text-warning d-block m-3 p-4 text-center 
+                        fw-bold border border-warning bg-primary">Click en mostrar artistas para comenzar</p>
+                    }
                     {/**
                     <div>
                         <AlbumCard/>
