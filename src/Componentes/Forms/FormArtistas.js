@@ -36,7 +36,7 @@ export default function FormArtistas({showForm}) {
       });
 
 
-      console.log(form)
+      console.log(e)
       console.log(e.target[4].files[0])
   };
 
@@ -58,7 +58,17 @@ export default function FormArtistas({showForm}) {
           <textarea id="breveBio" name="breveBio"></textarea>
 
           <label htmlFor="Generos">Generos</label>
-          <input type="text" id="generos" name="generos" />
+          <select id="genero" name="genero">
+            <option value="Rock">Rock</option>
+            <option value="Punk">Punk</option>
+            <option value="Post-punk">Post-punk</option>
+            <option value="Jazz"> Jazz</option>
+            <option value="Funk">Funk</option>
+            <option value="City-Pop">City-Pop</option>
+            <option value="Indie">Indie</option>
+            <option value="Experimental">Experimental</option>
+            <option value="New Wave">New Wave</option>
+        </select>
 
           <input type="file" name="file" id="imagenes"/>
 

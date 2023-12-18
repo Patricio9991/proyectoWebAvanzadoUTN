@@ -29,17 +29,18 @@ export default function Home(){
     const [showArtistas,setShowArtistas]=useState(true)
 
     return(
+    <div className="bg">
         <div className="canvasContent">
-            
+             
                 <h1>Musiquita</h1>   
             
             <main>
                 <div>
-                    <div className="contenedor-botones">
+                    <nav className="contenedor-botones">
                       
                         <button className="btnCRUD btn btn-success" onClick={()=>{setShowForm(!showForm);console.log(showForm)}}> Agregar Artista </button>
                         <button className="btnCRUD btn btn-primary" onClick={()=>{setShowArtistas(!showArtistas)}} > Mostrar Atistas </button>
-                    </div>
+                    </nav>
 
                         
                         <FormArtistas showForm={showForm}/>
@@ -59,9 +60,10 @@ export default function Home(){
                     </div> */}
                 </div>
             </main>
-
+            
 
         </div>
+    </div>
     )
 
 

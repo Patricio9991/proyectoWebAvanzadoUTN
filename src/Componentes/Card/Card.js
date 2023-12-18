@@ -6,6 +6,9 @@ import Songs from "../Songs/Songs"
 
 export default function Card({data}){
     const [flag,setFlag]=useState(false)
+    const [deleteOK,setDeleteOK]=useState(false)
+    const [mensaje,setMensaje]=useState(false)
+
 
     function popInfo(texto){
         swal(texto) //utlizo Sweetalert para mandar alerts sobre informacion del artista
@@ -23,6 +26,13 @@ export default function Card({data}){
             }
         })
         .then((data)=>{return data.json()})
+        .then(()=>{
+           
+            setTimeout(() => {
+                setDeleteOK(!deleteOK)
+            }, 500);
+        })
+
 
         return respuesta
 
@@ -31,6 +41,7 @@ export default function Card({data}){
     
     return(
         <div className="contenedor">
+            {deleteOK === false? 
             <div className="tarjetaArtista bg-primary">
                 <h2>{data.nombre}</h2>
                 <img src={`http://localhost:4000/${data.imagenes}`} alt={data.nombre}/>
@@ -40,8 +51,18 @@ export default function Card({data}){
                 <button className="btn btn-primary"onClick={()=>{popInfo(data.generos)}}>Generos</button>
                 <button className="btn btn-primary"onClick={()=>{ popInfo(data.breveBio)}}>Breve Bio</button>
                 <button className="btn btn-primary"onClick={()=>{ setFlag(!flag)}}>Canciones</button>
-                <button className="btn btn-danger"onClick={eliminarDataArtista}>Eliminar Artista</button>
-            </div>
+                <button className="btn btn-danger" onClick={()=>{ setMensaje(!mensaje)}}>Eliminar Artista</button> 
+
+                {mensaje === true? <div>
+                    <p>¿Está seguro?</p>
+                    <button onClick={()=>{eliminarDataArtista()}}>SI</button>
+                    <button onClick={()=>setMensaje(!mensaje)}>NO</button>
+                </div>:""}
+
+
+        
+
+            </div>:popInfo("ELIMINADO")}
 
             {flag ?<Songs nombre_artista={data.nombre}/>:""}
             
