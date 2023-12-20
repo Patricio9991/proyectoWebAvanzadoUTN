@@ -4,6 +4,7 @@ import "../Main/Main.css"
 
 import Card from "../../Componentes/Card/Card"
 import FormArtistas from "../../Componentes/Forms/FormArtistas"
+import FromCanciones from '../../Componentes/Forms/FormCanciones'
 
 
 
@@ -44,6 +45,7 @@ export default function Home(){
 
                         
                         <FormArtistas showForm={showForm}/>
+                        <FromCanciones/>
                         
                     {showArtistas === false ? 
                     <div className="conteneddor-artista-musica">
