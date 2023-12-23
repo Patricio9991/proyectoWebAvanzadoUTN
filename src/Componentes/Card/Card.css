@@ -1,11 +1,9 @@
 .contenedor{
     display: flex;
-    gap:90px;
-    
     
 }
 .tarjetaArtista{
-    margin-left: 6rem;
+    margin-left: 4rem;
     border: black 5px solid;
     width: 13rem;
     display: flex;
@@ -17,6 +15,7 @@
 }
 img{
     width: 10rem;
+    height: 14rem;
     border-radius: 25px;
     
 }
@@ -25,6 +24,7 @@ h2{
     font-weight: 900;
     font-size:30px;
     color:whitesmoke;
+
 }
 
 span{

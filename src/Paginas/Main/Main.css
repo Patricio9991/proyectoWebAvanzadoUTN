@@ -7,7 +7,10 @@
     background-image:url("../Main/fondo/pxfuel.jpg");
     background-size:cover;    
     background-attachment:fixed;
-    height: 100vw;
+    
+   
+   
+    
     
 }
 
@@ -34,10 +37,14 @@ h1{
     display: flex;
     gap:100px;
     flex-wrap: wrap;
-    align-items: center;
-    
-    
+    align-items: center; 
 }
+
+.ocultar{
+    visibility: hidden;
+
+}
+
 
 .btnCRUD{
     width: 12em;
@@ -45,7 +52,3 @@ h1{
     margin-bottom: 2em;
 }
 
-.mensaje{
-    
-   
-}

@@ -22,16 +22,15 @@ export default function Songs({nombre_artista}){
 
      
 
-   let cancion_artistas= canciones.filter((i)=>{return i.artista === nombre_artista})
+   let cancion_artistas= canciones.filter((i)=>{return i.artista.toLowerCase() === nombre_artista.toLowerCase()})
 
    console.log(cancion_artistas)
 
 
     return(
-    <div class="list-group">
+    <ul class="list-group">
         {cancion_artistas.map((item)=>{
-            return <p>{item.titulo}</p>
-        })}
-    </div>
+            return <li className="list-group-item">{item.titulo}</li>})}
+    </ul>
     )
 }

@@ -1,6 +1,6 @@
 import './form.css'
 
-export default function FormEliminar({infoArtista}){
+export default function FormEliminar({showSongsForm}){
 
     const cargarCancion=async(e)=>{
         e.preventDefault();
@@ -25,7 +25,7 @@ export default function FormEliminar({infoArtista}){
 
 
     return(
-        <form onSubmit={(e)=>{cargarCancion(e)}}> 
+        <form className={showSongsForm===true? "bg-dark hide" : "bg-dark form"} onSubmit={(e)=>{cargarCancion(e)}}> 
 
             <label htmlFor="titulo">Titulo</label>
             <input type="text" id="titulo" name="titulo"/>

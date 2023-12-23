@@ -20,3 +20,9 @@
 #breveBio{
     height: 120px;
 }
+
+.seccion-formulario{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

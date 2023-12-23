@@ -2,19 +2,24 @@ import "./Card.css"
 import { useState } from "react"
 import swal from 'sweetalert'
 import Songs from "../Songs/Songs"
+import FormEditar from "../Forms/FromEditar"
 
 
-export default function Card({data}){
+
+export default function Card({data,setShowForm,showForm}){
     const [flag,setFlag]=useState(false)
     const [deleteOK,setDeleteOK]=useState(false)
     const [mensaje,setMensaje]=useState(false)
+    const [flagEdit,setFlagEdit]=useState(false)
+    const [dataLS,setDataLS]=useState({})
 
 
     function popInfo(texto){
         swal(texto) //utlizo Sweetalert para mandar alerts sobre informacion del artista
     }
 
- 
+
+
     const eliminarDataArtista=async()=>{
         let nombreArtista=data.nombre
 
@@ -29,14 +34,28 @@ export default function Card({data}){
         .then(()=>{
            
             setTimeout(() => {
-                setDeleteOK(!deleteOK)
+                setDeleteOK(true)
             }, 500);
+            popInfo("ELIMINADO")
         })
 
 
         return respuesta
 
     }
+    
+    const editarArtista=()=>{
+        
+        localStorage.setItem("infoArtista",JSON.stringify(data))
+        const a=JSON.parse(localStorage.getItem("infoArtista"))
+        setFlagEdit(!flagEdit)
+        setDataLS(a)          
+}
+
+    console.log(dataLS)
+        
+
+    
 
     
     return(
@@ -52,6 +71,7 @@ export default function Card({data}){
                 <button className="btn btn-primary"onClick={()=>{ popInfo(data.breveBio)}}>Breve Bio</button>
                 <button className="btn btn-primary"onClick={()=>{ setFlag(!flag)}}>Canciones</button>
                 <button className="btn btn-danger" onClick={()=>{ setMensaje(!mensaje)}}>Eliminar Artista</button> 
+                <button className="btn btn-warning" onClick={editarArtista}>Editar Artista</button>
 
                 {mensaje === true? <div>
                     <p>¿Está seguro?</p>
@@ -62,12 +82,14 @@ export default function Card({data}){
 
         
 
-            </div>:popInfo("ELIMINADO")}
+            </div>:""}
 
             {flag ?<Songs nombre_artista={data.nombre}/>:""}
             
-          
+            {flagEdit ? <FormEditar dataLS={dataLS} setDataLS={setDataLS}/>:""}
             
         </div>
     )
+    
+    
 }
