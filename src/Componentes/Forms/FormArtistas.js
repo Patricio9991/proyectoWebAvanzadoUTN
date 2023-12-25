@@ -4,7 +4,7 @@ import "./form.css";
 
 
 
-export default function FormArtistas({showForm,setActualizar,editarBTN}) {
+export default function FormArtistas({showForm,setActualizar}) {
   const [flagOk, setFlagOk] = useState(false);
   const [info_editar, set_info_editar]=useState({})
  
@@ -14,7 +14,7 @@ export default function FormArtistas({showForm,setActualizar,editarBTN}) {
 
 
     const newFormData= new FormData (e.target)
-   const img_poster=e.target[4].value
+   const img_poster=e.target[4].value         //Manera funcional para cargar una imagen
    newFormData.append("file",img_poster)
     
     await fetch("http://localhost:4000/artistas/nuevo", {
@@ -23,6 +23,7 @@ export default function FormArtistas({showForm,setActualizar,editarBTN}) {
 
     })
     .then(() => {
+        console.log(...newFormData)
         e.target.reset()
         setFlagOk(true);
         setActualizar(true)
@@ -52,7 +53,7 @@ export default function FormArtistas({showForm,setActualizar,editarBTN}) {
           <input type="text" id="nombre" name="nombre" />
 
           <label htmlFor="Años Actividad">Años Actividad</label>
-          <input type="text" id="añosActividad" name="añosActividad" />
+          <input type="text" id="añosActividad" name="aniosActividad" />
 
           <label htmlFor="Breve Bio">Breve Bio</label>
           <textarea id="breveBio" name="breveBio" ></textarea>

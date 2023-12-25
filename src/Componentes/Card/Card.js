@@ -52,7 +52,7 @@ export default function Card({data,setShowForm,showForm}){
         setDataLS(a)          
 }
 
-    console.log(dataLS)
+ 
         
 
     
@@ -86,7 +86,7 @@ export default function Card({data,setShowForm,showForm}){
 
             {flag ?<Songs nombre_artista={data.nombre}/>:""}
             
-            {flagEdit ? <FormEditar dataLS={dataLS} setDataLS={setDataLS}/>:""}
+            {flagEdit ? <FormEditar popInfo={popInfo} dataLS={dataLS} setDataLS={setDataLS}/> :""}
             
         </div>
     )
