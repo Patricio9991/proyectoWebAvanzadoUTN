@@ -14,6 +14,7 @@ export default function Card({data,setShowForm,showForm}){
     const [dataLS,setDataLS]=useState({})
 
 
+
     function popInfo(texto){
         swal(texto) //utlizo Sweetalert para mandar alerts sobre informacion del artista
     }
@@ -84,7 +85,7 @@ export default function Card({data,setShowForm,showForm}){
 
             </div>:""}
 
-            {flag ?<Songs nombre_artista={data.nombre}/>:""}
+            {flag ?<Songs key={data.id} nombre_artista={data.nombre} />:""}
             
             {flagEdit ? <FormEditar popInfo={popInfo} dataLS={dataLS} setDataLS={setDataLS}/> :""}
             

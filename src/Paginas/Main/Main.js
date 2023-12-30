@@ -38,7 +38,7 @@ export default function Home(){
 
     useEffect(()=>{buscarInfoArtistas()},[actualizar])
 
-    //controlo lo que pase con localStorage desde fuera del form
+    
 
 
 
@@ -61,13 +61,13 @@ export default function Home(){
 
                         <section className="seccion-formulario">
                         <FormArtistas showForm={showForm}  setActualizar={setActualizar}/>
-                        <FromCanciones showSongsForm={songForm}/>
+                        <FromCanciones showSongsForm={songForm} />
                         </section>
 
                     
                     <div className={showArtistas === false? "conteneddor-artista-musica":"conteneddor-artista-musica ocultar"}>
                         {artistas.map((a)=>{
-                            return  <Card data={a} setShowForm={setShowForm} showForm={showForm} />
+                            return  <Card key={a.id} data={a} setShowForm={setShowForm} showForm={showForm} />
                             
                         })}
                     </div>

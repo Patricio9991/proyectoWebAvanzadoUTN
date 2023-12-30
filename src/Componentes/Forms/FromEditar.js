@@ -12,12 +12,8 @@ export default function FormEditar({popInfo,dataLS,setDataLS}){
         console.log(e)
         console.dir(e)
 
-       
+        const numeroMagico=dataLS.id
 
-        //const newBody=new FormData (e.target)
-        const numeroMagico=dataLS.id 
-        
-        
         const body_form={
             nombre:e.target[0].value,
             añosActividad:e.target[1].value,
@@ -58,8 +54,22 @@ export default function FormEditar({popInfo,dataLS,setDataLS}){
     const cambioValor=(e)=>{
         console.log(e)
         setDataLS({...dataLS,[e.target.name]:e.target.value})
+       console.log([e.target.name])
+       console.log(e.target.value)
+
         
     }
+    //Asi funciona cambioValor()
+    // const obj={
+    //     nombre:"cala",
+    //     apellido:"Calita"
+    // }
+    // console.log(obj)
+
+    // obj.nombre="Lana"
+
+    // console.log(obj)
+    
 
 
     return(

@@ -1,6 +1,6 @@
 import './form.css'
 
-export default function FormEliminar({showSongsForm}){
+export default function FormCanciones({showSongsForm}){
 
     const cargarCancion=async(e)=>{
         e.preventDefault();

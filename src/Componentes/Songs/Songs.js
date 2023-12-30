@@ -20,12 +20,9 @@ export default function Songs({nombre_artista}){
     useEffect(()=>{buscarCanciones()},[])
 
 
-     
 
-   let cancion_artistas= canciones.filter((i)=>{return i.artista.toLowerCase() === nombre_artista.toLowerCase()})
-
-   console.log(cancion_artistas)
-
+    const cancion_artistas= canciones.filter((i)=>{return i.artista.toLowerCase() === nombre_artista.toLowerCase()})
+        
 
     return(
     <ul class="list-group">
