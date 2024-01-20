@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useState } from "react";
 import "./form.css";
 
 
@@ -6,7 +6,7 @@ import "./form.css";
 
 export default function FormArtistas({showForm,setActualizar}) {
   const [flagOk, setFlagOk] = useState(false);
-  const [info_editar, set_info_editar]=useState({})
+ 
  
 
   const cargarData = async (e) => {

@@ -21,7 +21,7 @@ export default function FormEditar({popInfo,dataLS,setDataLS}){
             generos:e.target[3].value
         }
         
-       console.log("Form en el submit"+body_form)
+       
 
         await fetch(`http://localhost:4000/artistas/editar/${numeroMagico}`,{
             method:"put",
@@ -47,8 +47,8 @@ export default function FormEditar({popInfo,dataLS,setDataLS}){
     }
 
     useEffect(()=>{
-        console.log("data en el use effect"+ dataLS)
         setDataLS(dataLS)
+        // eslint-disable-next-line 
     },[edit])
 
     const cambioValor=(e)=>{
